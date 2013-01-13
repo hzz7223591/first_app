@@ -1,4 +1,18 @@
 FirstApp::Application.routes.draw do
+
+
+  resources :pictures
+
+  resources :products
+  namespace :superadmins do
+
+    resources :inspect
+
+     end
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

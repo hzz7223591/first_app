@@ -1,0 +1,2 @@
+module Superadmins::InspectHelper
+end

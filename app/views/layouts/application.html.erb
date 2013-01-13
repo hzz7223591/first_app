@@ -4,11 +4,16 @@
   <title>FirstApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "dataTables_bootstrap" %>
+  <%= javascript_include_tag "dataTables_bootstrap",charset:"utf-8" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render 'header' %>
+<%= render 'content' %>
 
-<%= yield %>
+
+
 
 </body>
 </html>
