@@ -1,13 +1,21 @@
 FirstApp::Application.routes.draw do
 
 
+  get "exposure/index"
+
+  get "myinspect/index"
+
+  get "inspection/index"
+
   resources :pictures
 
   resources :products
   namespace :superadmins do
 
     resources :inspect
-
+    resources :inspection
+    resources :myinspect
+    resources :exposure
      end
 
 

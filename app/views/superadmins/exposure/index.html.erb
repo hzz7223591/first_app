@@ -1,0 +1,20 @@
+<h1>违规人员公示</h1>
+<table id="products">
+  <thead>
+  <tr>
+    <th>囧号</th>
+    <th>违规原因</th>
+    <th>扣除积分</th>
+    <th>举报人</th>
+    <th>举报人奖励</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+
+  <% end %>
+  </tbody>
+</table>

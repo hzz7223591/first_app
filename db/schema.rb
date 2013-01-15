@@ -33,13 +33,4 @@ ActiveRecord::Schema.define(:version => 20130111030631) do
     t.integer  "unpass"
   end
 
-  create_table "products", :force => true do |t|
-    t.string   "title"
-    t.integer  "number"
-    t.integer  "price"
-    t.string   "version"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
 end
