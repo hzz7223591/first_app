@@ -16,7 +16,14 @@ FirstApp::Application.routes.draw do
     resources :inspection
     resources :myinspect
     resources :exposure
+
+    match '/pictures/:id/vote' => 'pictures#vote' , :id => /\d+/
+    match '/pictures/:id/vote1' => 'pictures#vote1' , :id => /\d+/
      end
+
+
+
+
 
 
 
