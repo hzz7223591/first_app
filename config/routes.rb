@@ -3,7 +3,7 @@ FirstApp::Application.routes.draw do
 
 
 
-
+resources :users
 
   get "primary_pages/new"
 
