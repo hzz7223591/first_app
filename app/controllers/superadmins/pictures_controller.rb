@@ -8,6 +8,35 @@ class PicturesController < BaseController
 
     end
 
+    def create
+      @picture = Picture.new(params[:picture])
+
+      respond_to do |format|
+       if @picture.save
+        format.html {redirect_to '/superadmins/inspect' }
+        format.js
+       else
+         end
+      end
+    end
+
+    def destroy
+      @picture = Picture.find(params[:id])
+      @picture.destroy
+
+      respond_to do |format|
+        format.html { redirect_to '/superadmins/inspect' }
+        format.json
+      end
+    end
+
+
+    def upload
+
+    end
+
+
+
 
      def vote
      @picture=Picture.find(params[:id])

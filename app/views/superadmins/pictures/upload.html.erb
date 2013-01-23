@@ -1,0 +1,21 @@
+<%= form_tag superadmins_pictures_path do %>
+    <div class="field">
+      <%= label_tag "content" %>
+      <%= text_field_tag :content,params[:content] %>
+    </div>
+
+    <div class="field">
+      <%= label_tag "pass" %>
+      <%= text_field_tag :pass,params[:pass] %>
+    </div>
+    <div class="field">
+      <%= label_tag "unpass" %>
+      <%= text_field_tag :unpass %>
+    </div>
+
+
+
+
+    <%= submit_tag "上传", class:"btn" %>
+
+    <% end %>

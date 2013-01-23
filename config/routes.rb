@@ -1,25 +1,34 @@
 FirstApp::Application.routes.draw do
 
 
-  get "exposure/index"
 
-  get "myinspect/index"
 
-  get "inspection/index"
+
+
+  get "primary_pages/new"
+
+
+
+  get "user/new"
+
+
 
   resources :pictures
 
   resources :products
+
   namespace :superadmins do
 
     resources :inspect
     resources :inspection
     resources :myinspect
     resources :exposure
-
+    resources :pictures ,only: [:create]
     match '/pictures/:id/vote' => 'pictures#vote' , :id => /\d+/
     match '/pictures/:id/vote1' => 'pictures#vote1' , :id => /\d+/
-     end
+    root to:"index_page#index"
+    match '/pictures/upload' => 'pictures#upload'
+    end
 
 
 
