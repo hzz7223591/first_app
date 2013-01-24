@@ -3,22 +3,20 @@ module Superadmins
 class PicturesController < BaseController
   # GET /pictures
   # GET /pictures.json
-    def index
 
-
-    end
 
     def create
-      @picture = Picture.new(params[:picture])
+      @picture = Picture.create!(params[:picture])
 
-      respond_to do |format|
-       if @picture.save
-        format.html {redirect_to '/superadmins/inspect' }
-        format.js
-       else
-         end
+      if @picture.save
+        flash[:success] ="注册成功"
+        redirect_to '/superadmins/inspect'
+
+      else
+        render 'new'
       end
     end
+
 
     def destroy
       @picture = Picture.find(params[:id])
@@ -31,8 +29,8 @@ class PicturesController < BaseController
     end
 
 
-    def upload
-
+    def new
+      @picture = Picture.new(params[:picture])
     end
 
 

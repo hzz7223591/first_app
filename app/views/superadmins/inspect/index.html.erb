@@ -22,12 +22,12 @@
          <td><%= picture.unpass %></td>
          <td><%= picture.pass %></td>
          <td><%= picture.groupunpass %></td>
-   <% end %>
+         <td><%= link_to "删除", "inspect/#{picture.id}" ,
+                 :confirm => "确定要删除吗？", :method=>:delete %></p></td>
    </tbody>
  </table>
- <%= link_to "删除", '/superadmins/pictures', class: "btn remove-btn", id: "delete_superadmins_pictures",
-         :confirm => "确定要删除这辆车吗？", :method=>:delete, remote: true %></p>
 
+       <% end %>
 
 
 

@@ -23,11 +23,12 @@ resources :users
     resources :inspection
     resources :myinspect
     resources :exposure
-    resources :pictures ,only: [:create]
+    resources :pictures
     match '/pictures/:id/vote' => 'pictures#vote' , :id => /\d+/
     match '/pictures/:id/vote1' => 'pictures#vote1' , :id => /\d+/
     root to:"index_page#index"
     match '/pictures/upload' => 'pictures#upload'
+    match '/inspect/:id' => 'inspect#destroy'
     end
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123132814) do
+ActiveRecord::Schema.define(:version => 20130124122614) do
 
   create_table "goods", :force => true do |t|
     t.integer  "number"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130123132814) do
     t.integer  "pass"
     t.integer  "unpass"
     t.integer  "groupunpass"
+    t.string   "status"
   end
 
   create_table "users", :force => true do |t|
