@@ -2,15 +2,17 @@ FirstApp::Application.routes.draw do
 
 
 
+  resources :sessions, only: [:new, :create, :destroy]
+   match '/signup', to:"users#new"
+   match '/signin', to: "sessions#new"
+   match '/signout', to: "sessions#destroy", vai: :delete
+
 
 resources :users
 
-  get "primary_pages/new"
-
-
-
+  get "primary_pages/index"
   get "user/new"
-
+root :to => "primary_pages#index"
 
 
   resources :pictures
@@ -31,7 +33,19 @@ resources :users
     match '/inspect/:id' => 'inspect#destroy'
     end
 
+  namespace :admins do
 
+    resources :inspect
+    resources :inspection
+    resources :myinspect
+    resources :exposure
+    resources :pictures
+    match '/pictures/:id/vote' => 'pictures#vote' , :id => /\d+/
+    match '/pictures/:id/vote1' => 'pictures#vote1' , :id => /\d+/
+    root to:"index_page#index"
+    match '/pictures/upload' => 'pictures#upload'
+    match '/inspect/:id' => 'inspect#destroy'
+  end
 
 
 

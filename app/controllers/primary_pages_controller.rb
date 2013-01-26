@@ -1,8 +1,8 @@
 class PrimaryPagesController < ApplicationController
-  def new
-    @user=User.new
+
+  def index
+
   end
 
-  def create
-  end
+
 end
