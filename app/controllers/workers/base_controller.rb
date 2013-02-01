@@ -1,4 +1,4 @@
-module Workerss
+module Workers
   class BaseController < ApplicationController
   end
 end

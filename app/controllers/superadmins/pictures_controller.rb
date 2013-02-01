@@ -6,12 +6,11 @@ class PicturesController < BaseController
 
 
     def create
-      @picture = Picture.create!(params[:picture])
+      @picture = current_user.pictures.build(params[:picture])
 
       if @picture.save
         flash[:success] ="注册成功"
         redirect_to '/superadmins/inspect'
-
       else
         render 'new'
       end
@@ -37,8 +36,9 @@ class PicturesController < BaseController
 
 
      def vote
-     @picture=Picture.find(params[:id])
 
+       @picture=Picture.find(params[:id])
+       current_user.inspect!(@picture)
      @picture.unpass=@picture.unpass+1
      if (@picture.unpass>=2)
        @picture.groupunpass=@picture.groupunpass+1
@@ -61,7 +61,7 @@ class PicturesController < BaseController
 
      def vote1
        @picture=Picture.find(params[:id])
-
+        current_user.inspect!(@picture)
 
        @picture.pass=@picture.pass+1
        if @picture.pass>=90

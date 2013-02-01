@@ -8,17 +8,20 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
     sign_in (user)
 
-      if current_user.is_a? Superadmins
+      if current_user.is_a? Superadmin
         redirect_to '/superadmins'
-      if current_user.is_a? Admins
+       else if current_user.is_a? Admin
              redirect_to '/admins'
-       if current_user.is_a? workers
+       else if current_user.is_a? Worker
           redirect_to '/workers'
-         if  current_user.is_a? tourists
-          redirect_to '/tourists'
-         end
+         else
+          redirect_to '/'
          end
        end
+
+  end
+
+
     else
       flash.now[:error] = '*用户名或密码错误!'
       render 'new'
@@ -27,11 +30,8 @@ class SessionsController < ApplicationController
 
 
 
-end
-
   def destroy
     sign_out
     redirect_to root_path
-
   end
-end
+  end

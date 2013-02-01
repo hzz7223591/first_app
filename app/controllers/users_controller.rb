@@ -14,5 +14,22 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  def show
+    @user=User.find(params[:id])
+    @pictures=@user.pictures#.paginate(page: params[:page])
+  end
+
+   def index
+     @users=User.all
+   end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success]="User destroyed"
+    redirect_to users_path
+  end
+
+
 end
 

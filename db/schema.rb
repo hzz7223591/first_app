@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127124700) do
+ActiveRecord::Schema.define(:version => 20130201023155) do
 
   create_table "goods", :force => true do |t|
     t.integer  "number"
@@ -33,7 +33,19 @@ ActiveRecord::Schema.define(:version => 20130127124700) do
     t.integer  "unpass"
     t.integer  "groupunpass"
     t.string   "status"
+    t.integer  "user_id"
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "picture_inspecter_id"
+    t.integer  "inspecter_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "relationships", ["inspecter_id"], :name => "index_relationships_on_inspecter_id"
+  add_index "relationships", ["picture_inspecter_id", "inspecter_id"], :name => "index_relationships_on_picture_id_and_inspecter_id", :unique => true
+  add_index "relationships", ["picture_inspecter_id"], :name => "index_relationships_on_picture_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

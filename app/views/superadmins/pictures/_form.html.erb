@@ -1,5 +1,5 @@
 <%=form_for @picture, :as => :picture, :url => superadmins_pictures_path(@picture), :method => :post do |f| %>
-    <%= f.label :content, "姓名", :class => "control-label" %>
+    <%= f.label :content, "标题", :class => "control-label" %>
     <%= f.text_field :content, :class => "input-medium" %>
     <%= f.submit "确定", class: "btn" %>
     <%end%>

@@ -2,8 +2,8 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%=form_for(@user) do|f| %>
-        <%=render'shared/error_messages',object:f.object%>
+    <%=form_for(@worker,:as => :worker, :url => superadmins_workers_path(@worker), :method => :post) do|f| %>
+
         <%=f.label :"姓名"%>
         <%=f.text_field :name%>
         <%=f.label :"密码"%>
