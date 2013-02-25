@@ -1,3 +1,5 @@
+
+
 module Superadmins
 
 class PicturesController < BaseController
@@ -6,7 +8,7 @@ class PicturesController < BaseController
 
 
     def create
-      @picture = current_user.pictures.build(params[:picture])
+      @picture= current_user.pictures.build(params[:picture])
 
       if @picture.save
         flash[:success] ="注册成功"
@@ -18,8 +20,8 @@ class PicturesController < BaseController
 
 
     def destroy
-      @picture = Picture.find(params[:id])
-      @picture.destroy
+      @post = Picture.find(params[:id])
+      @post.destroy
 
       respond_to do |format|
         format.html { redirect_to '/superadmins/inspect' }
@@ -29,7 +31,7 @@ class PicturesController < BaseController
 
 
     def new
-      @picture = Picture.new(params[:picture])
+      @post = Post.new(params[:post])
     end
 
 
@@ -37,17 +39,21 @@ class PicturesController < BaseController
 
      def vote
 
-       @picture=Picture.find(params[:id])
-       current_user.inspect!(@picture)
-     @picture.unpass=@picture.unpass+1
-     if (@picture.unpass>=2)
-       @picture.groupunpass=@picture.groupunpass+1
-       @picture.unpass=0
-       @picture.pass=0
+       @post=Post.find(params[:id])
+       current_user.inspect!(@post)
+     @post.unpass=@post.unpass+1
+     if (@post.unpass>=2)
+       @post.groupunpass=@post.groupunpass+1
+       @post.unpass=0
+       @post.pass=0
 
-       @picture.save
+
+       if (@post.groupunpass>=2)
+         @post.status="未通过"
+       end
+       @post.save
      else
-       @picture.save
+       @post.save
        end
      #if @picture.unpass>=90
        #@picture.status="未通过"
@@ -60,14 +66,21 @@ class PicturesController < BaseController
      end
 
      def vote1
-       @picture=Picture.find(params[:id])
-        current_user.inspect!(@picture)
+       @post=Post.find(params[:id])
+       current_user.inspect!(@post)
+       @post.pass=@post.pass+1
+       if (@post.pass>=2)
+         @post.grouppass=@post.grouppass+1
+         @post.unpass=0
+         @post.pass=0
 
-       @picture.pass=@picture.pass+1
-       if @picture.pass>=90
-         @picture.status="通过"
+
+         if (@post.grouppass>=2)
+           @post.status="通过"
+         end
+         @post.save
        else
-         @picture.save
+         @post.save
        end
        redirect_to '/superadmins/inspect'
      end

@@ -1,8 +1,14 @@
+
 module Superadmins
 class InspectController < BaseController
   def index
-    @picture=Picture.all.sample
-  #@pictures=Picture.all
+
+     unless (Picture.where("status='待审'").all-current_user.pictures).empty?
+    @picture=(Picture.where("status='待审'").all-current_user.pictures).sample
+      else
+       @picture=Picture.all.sample
+     end
+  # @pictures=Picture.all
   # @picture=@pictures-current_user.inspected_pictures
   # @picture=@picture.sample
     @pictures=Picture.all

@@ -9,14 +9,21 @@
 <li><%= link_to "主页", root_path %></li>
 
           <% if signed_in?%>
+                <li><%=link_to "个人主页", user_path(current_user) %></li>
               <li>
                 <%=link_to "登出"  ,signout_path,method:"delete"  %>
               </li>
+
           <% else %>
-              li>
+              <li>
               <%=link_to "登录"  ,signin_path  %>
               </li>
           <%end%>
+
+
+
+
+
 
         </ul>
       </nav>

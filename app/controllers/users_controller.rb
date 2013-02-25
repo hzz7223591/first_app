@@ -3,13 +3,15 @@ class UsersController < ApplicationController
     @user=User.new
   end
   def create
-    @user=User.new(params[:user])
 
+    @user= params[:user]?User.new(params[:user]) : User.new_guest
     if @user.save
       flash[:success] ="注册成功"
-      @user.type=workers
-      redirect_to '/superadmins/inspect'
-
+      session[:user_id] = @user.id
+      if @user.guest!=true
+        @user.type=worker
+      end
+      redirect_to root_path
     else
       render 'new'
     end

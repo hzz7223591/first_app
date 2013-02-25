@@ -12,6 +12,7 @@
      <th>unpass</th>
      <th>pass</th>
      <th>groupunpass</th>
+     <th>status</th>
    </tr>
    </thead>
    <tbody>
@@ -22,6 +23,7 @@
          <td><%= picture.unpass %></td>
          <td><%= picture.pass %></td>
          <td><%= picture.groupunpass %></td>
+         <td><%= picture.status %></td>
          <td><%= link_to "删除", "inspect/#{picture.id}" ,
                  :confirm => "确定要删除吗？", :method=>:delete %></p></td>
    </tbody>

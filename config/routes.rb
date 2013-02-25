@@ -67,9 +67,16 @@ root :to => "primary_pages#index"
     match '/pictures/upload' => 'pictures#upload'
     match '/inspect/:id' => 'inspect#destroy'
   end
+  namespace :tourists do
 
-
-
+    resources :inspect
+    resources :pictures
+    match '/pictures/:id/vote' => 'pictures#vote' , :id => /\d+/
+    match '/pictures/:id/vote1' => 'pictures#vote1' , :id => /\d+/
+    root to:"index_page#index"
+    match '/pictures/upload' => 'pictures#upload'
+    match '/inspect/:id' => 'inspect#destroy'
+    end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,12 +1,21 @@
 <h1>All users</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>badges</th>
+    <th>points</th>
+    <th>level</th>
+  </tr>
 
-<ul class="users">
-  <% @users.each do |user| %>
-      <li>
-    <%=link_to user.name,"#{user.id}"%>
 
-   |<%=link_to "delete","#{user.id}",method: :delete, date:{confirm:"You sure?"} %>
+<<% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.show_badges %></td>
+        <td><%= user.points %></td>
+        <td><%= user.level %></td>
 
-      </li>
-  <%end%>
-</ul>
+        <td><%= link_to 'Destroy', "#{user.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>

@@ -24,7 +24,9 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end
-
+   def guest?
+     current_user.guest==true
+   end
 
   def sign_out
     self.current_user=nil
