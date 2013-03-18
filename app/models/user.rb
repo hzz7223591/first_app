@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_merit
-
+  has_many :products
   attr_accessible :name, :password,:password_confirmation ,:remember_token
   validates :password, presence:true , unless: :guest?
   validates :password_confirmation, presence:true , unless: :guest?
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   before_save :create_remember_token
   has_many :pictures, dependent: :destroy
-  has_many :pictures,:through => :relationships
+
   has_many :relationships
 
   def inspecting?(other_picture)
