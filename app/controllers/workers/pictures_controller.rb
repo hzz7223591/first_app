@@ -10,7 +10,7 @@ class PicturesController < BaseController
 
       if @picture.save
         flash[:success] ="注册成功"
-        redirect_to '/admins/inspect'
+        redirect_to '/workers/inspect'
 
       else
         render 'new'
@@ -23,7 +23,7 @@ class PicturesController < BaseController
       @picture.destroy
 
       respond_to do |format|
-        format.html { redirect_to '/admins/inspect' }
+        format.html { redirect_to '/workers/inspect' }
         format.json
       end
     end
@@ -54,7 +54,7 @@ class PicturesController < BaseController
      #else
      #@picture.save
      #end
-     redirect_to '/superadmins/inspect'
+     redirect_to '/workers/inspect'
 
 
      end
@@ -69,7 +69,7 @@ class PicturesController < BaseController
        else
          @picture.save
        end
-       redirect_to '/superadmins/inspect'
+       redirect_to '/workers/inspect'
      end
 
 end

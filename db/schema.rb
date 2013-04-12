@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(:version => 2013030204521212) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "status"
-    t.integer  "pass"
-    t.integer  "unpass"
-    t.integer  "groupunpass"
-    t.integer  "grouppass"
+    t.integer  "pass",        :default => 0
+    t.integer  "unpass",      :default => 0
+    t.integer  "groupunpass", :default => 0
+    t.string   "status",      :default => "待审"
+    t.integer  "grouppass",   :default => 0
   end
 
   create_table "products", :force => true do |t|
