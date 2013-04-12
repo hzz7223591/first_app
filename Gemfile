@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 gem 'faker' ,'1.0.1'
 gem 'rails', '3.2.8'
 gem 'bcrypt-ruby' ,'3.0.1'
